@@ -1,6 +1,143 @@
 <MainScreenManager>:
-    Dashboard:
+
+    CadastroMembro:
     Login:
+    EBD:
+    Dashboard:
+
+<CadastroMembro>:
+    name: "cad_membro"
+    MDFloatLayout:
+        orientation:"vertical"
+        md_bg_color: 0/255, 0/255, 60/255, 1
+        padding:10
+        MDTopAppBar:
+            id: appbar
+            title:"CAAD"
+            elevation: 4
+            pos_hint:{"center_y":.95}
+            left_action_items: [["menu"]]
+        MDBoxLayout:
+            md_bg_color: 0/255, 0/255, 150/255, 1
+            size_hint_y:.07
+            size_hint_x:1
+            pos_hint:{"center_x":.5,"center_y":.87}
+            padding:20
+            orientation:"horizontal"
+            MDLabel:
+                text:"Cadastro de Membro"
+                #adaptive_size:True
+                halign:"center"
+                font_size:30
+
+        MDFloatLayout:
+            md_bg_color: 0/255, 0/255, 150/255, 1
+            size_hint_y:.75
+            size_hint_x:.9
+            pos_hint:{"center_x":.5,"center_y":.45}
+            padding:20
+            orientation:"vertical"
+
+            MDTextField:
+                id: nome
+                hint_text:"Nome Completo:"
+                size_hint_x:.9
+                pos_hint:{"center_x":.5, "center_y":.9}
+            MDTextField:
+                id: cpf
+                hint_text:"CPF:"
+                size_hint_x:.9
+                pos_hint:{"center_x":.5, "center_y":.8}
+
+            MDTextField:
+                id: data_nasc
+                hint_text:"Data de Nascimento"
+                size_hint_x:.9
+                pos_hint:{"center_x":.5, "center_y":.7}
+                on_focus: root.showDatePicker()
+
+            MDTextField:
+                id: data_membro
+                hint_text:"Membro desde:"
+                size_hint_x:.9
+                pos_hint:{"center_x":.5, "center_y":.6}
+                on_focus: root.showDatePickerSince()
+
+            MDTextField:
+                id: endereco
+                hint_text:"Endereço:"
+                size_hint_x:.9
+                pos_hint:{"center_x":.5, "center_y":.5}
+
+            MDTextField:
+                id: congregacao
+                hint_text:"Congregaçao:"
+                size_hint_x:.9
+                pos_hint:{"center_x":.5, "center_y":.4}
+
+            MDTextField:
+                id: departamento
+                hint_text:"Departamento:"
+                size_hint_x:.9
+                pos_hint:{"center_x":.5, "center_y":.3}
+
+            MDTextField:
+                id: cargo
+                hint_text:"Cargo:"
+                size_hint_x:.9
+                pos_hint:{"center_x":.5, "center_y":.2}
+
+            MDRaisedButton:
+                text:"Cancelar"
+                pos_hint:{"center_x":.15, "center_y":.07}
+                on_release:
+
+            MDRaisedButton:
+                text:"Salvar"
+                pos_hint:{"center_x":.86, "center_y":.07}
+                on_release: root.cadastrar_membro(nome.text,cpf.text,data_nasc.text,data_membro.text,endereco.text,congregacao.text,departamento.text,cargo.text)
+
+
+
+
+
+
+
+<EBD>:
+    name:"ebd"
+    MDBoxLayout:
+        orientation:"vertical"
+        pos_hint:{"top":1}
+        md_bg_color: 0/255, 0/255, 60/255, 1
+        MDTopAppBar:
+            id: appbar
+            title:"CAAD"
+            elevation: 4
+            pos_hint:{"center_y":.95}
+            left_action_items: [["menu", lambda x: app.callback()]]
+        ScrollView:
+            orientation:"vertical"
+            do_scroll_x: False
+            do_scroll_y: True
+            pos_hint:{"center_y": .6}
+            size_hint:(1,1)
+            MDGridLayout:
+                size_hint_y:.75
+                cols:2
+                padding:[dp(15),dp(15),dp(15),dp(35)]
+                spacing:dp(15)
+
+                ElementCard:
+                    image:"imagens/eugenic_logo.png"
+                    text:"Turmas"
+
+                ElementCard:
+                    image:"imagens/eugenic_logo.png"
+                    text:"Relatorios"
+
+                ElementCard:
+                    image:"imagens/eugenic_logo.png"
+                    text:"Cadastro de Aluno"
 
 <Dashboard>:
     name: "dashboard"
@@ -28,26 +165,26 @@
 
                 ElementCard:
                     image:"imagens/eugenic_logo.png"
-                    text:"Cadastrar Produto"
+                    text:"EBD"
 
                 ElementCard:
                     image:"imagens/eugenic_logo.png"
-                    text:"Cadastrar Produto"
+                    text:"Departamentos"
 
                 ElementCard:
                     image:"imagens/eugenic_logo.png"
-                    text:"Cadastrar Produto"
+                    text:"Açao Social"
 
                 ElementCard:
                     image:"imagens/eugenic_logo.png"
-                    text:"Cadastrar Produto"
+                    text:"Agenda de Eventos"
 
                 ElementCard:
                     image:"imagens/eugenic_logo.png"
-                    text:"Cadastrar Produto"
+                    text:"Escalas"
                 ElementCard:
                     image:"imagens/eugenic_logo.png"
-                    text:"Cadastrar Produto"
+                    text:"Cadastro de Membro"
 
 
 
