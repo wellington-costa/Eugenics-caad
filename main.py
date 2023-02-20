@@ -1,16 +1,37 @@
-# This is a sample Python script.
+import os
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from kaki.app import App
+from kivy.factory import Factory
+from kivymd.app import MDApp
 
 
-# Press the green button in the gutter to run the script.
+
+
+
+
+class CaadApp(MDApp, App):
+    DEBUG = 1  # set this to 0 make live app not working
+
+    # *.kv files to watch
+    KV_FILES = {
+        os.path.join(os.getcwd(), "screenmanager.kv")
+    }
+
+    # class to watch from *.py files
+    CLASSES = {
+        "MainScreenManager": "screenmanager"
+
+    }
+
+    # auto reload path
+    AUTORELOADER_PATHS = [
+        (".", {"recursive": True}),
+    ]
+
+    def build_app(self):
+     return Factory.MainScreenManager()
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+ CaadApp().run()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+

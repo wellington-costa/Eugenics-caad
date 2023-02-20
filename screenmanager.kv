@@ -1,0 +1,136 @@
+<MainScreenManager>:
+    Dashboard:
+    Login:
+
+<Dashboard>:
+    name: "dashboard"
+    MDBoxLayout:
+        orientation:"vertical"
+        pos_hint:{"top":1}
+        md_bg_color: 0/255, 0/255, 60/255, 1
+        MDTopAppBar:
+            id: appbar
+            title:"CAAD"
+            elevation: 4
+            pos_hint:{"center_y":.95}
+            left_action_items: [["menu", lambda x: app.callback()]]
+        ScrollView:
+            orientation:"vertical"
+            do_scroll_x: False
+            do_scroll_y: True
+            pos_hint:{"center_y": .6}
+            size_hint:(1,1)
+            MDGridLayout:
+                size_hint_y:.75
+                cols:2
+                padding:[dp(15),dp(15),dp(15),dp(35)]
+                spacing:dp(15)
+
+                ElementCard:
+                    image:"imagens/eugenic_logo.png"
+                    text:"Cadastrar Produto"
+
+                ElementCard:
+                    image:"imagens/eugenic_logo.png"
+                    text:"Cadastrar Produto"
+
+                ElementCard:
+                    image:"imagens/eugenic_logo.png"
+                    text:"Cadastrar Produto"
+
+                ElementCard:
+                    image:"imagens/eugenic_logo.png"
+                    text:"Cadastrar Produto"
+
+                ElementCard:
+                    image:"imagens/eugenic_logo.png"
+                    text:"Cadastrar Produto"
+                ElementCard:
+                    image:"imagens/eugenic_logo.png"
+                    text:"Cadastrar Produto"
+
+
+
+
+<ElementCard@MDCard>:
+    md_bg_color: 150/255, 155/255, 150/255, 0.2
+    padding:dp(10)
+    spacing:dp(10)
+    radius:dp(25)
+    ripple_behavior: True
+    image:''
+    text:""
+    items_count:""
+    subtext:''
+
+    orientation:'vertical'
+    Image:
+        source:root.image
+    MDBoxLayout:
+        orientation:'vertical'
+        MDLabel:
+            halign:"center"
+            text:root.text
+            font_size: "15sp"
+            #font_name: "Poppins-Medium.ttf"
+        MDLabel:
+            halign:"center"
+            font_style:"Caption"
+            text:root.subtext
+        MDLabel:
+            halign:"center"
+            text:root.items_count
+
+
+
+<Login>:
+    name:"login"
+    MDFloatLayout:
+        orientation: "vertical"
+        padding:30
+        #spacing:20
+        size_hint_x:1
+        size_hint_y:1
+
+        #pos_hint:{"center_x":.5, "center_y":.5}
+        #adaptive_height: True
+        #adaptive_width: True
+        #adaptive_size: True
+        #md_bg_color: 200/255, 200/255, 200/255, 1
+        FitImage:
+            source: "imagens/fundo_login.jpg"
+            size_hint_y: 1
+            pos_hint: {"top": 1}
+
+        MDCard:
+            md_bg_color: 230/255, 240/255, 240/255, 0.4
+            pos_hint:{"center_x":.5, "center_y":.5}
+            radio:36
+            size_hint_x: .8
+            size_hint_y:.5
+            padding:20
+            orientation:"vertical"
+
+
+            MDLabel:
+                text:"Login"
+                #adaptive_size:True
+                font_size:30
+                halign:"center"
+                #pos_hint:{"center_x":.5, "center_y":.8}
+            MDTextField:
+                id: usuario
+                hint_text: "Usuario"
+                size_hint_x: .7
+                pos_hint:{"center_x":.5, "center_y":.7}
+
+
+            MDTextField:
+                id: senha
+                hint_text:"Senha"
+                size_hint_x: .7
+                pos_hint:{"center_x":.5, "center_y": .6}
+
+            MDRaisedButton:
+                text:"Entrar"
+                pos_hint:{"center_x":.5, "center_y": .2}
